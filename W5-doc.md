@@ -1101,4 +1101,4 @@ if (uploadedImagesMetadata.length > 0) {
 **Điều này chứng minh Lambda đã nhận request metadata ảnh từ API Gateway và ghi thành công vào DynamoDB.**
 ## MH4-O — Evidence DynamoDB có metadata từ backend
 - DynamoDB → Tables → minie-media-metadata → Explore table items
-![DynamoDB có metadata](./evidence-W5/ynamoDB%20có%20metadata.jpgg)
+![DynamoDB có metadata](./evidence-W5/ynamoDB%20có%20metadata.jpg)
