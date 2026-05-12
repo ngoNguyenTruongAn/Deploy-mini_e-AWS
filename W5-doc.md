@@ -383,54 +383,7 @@ VPC ID accepter: chọn minie-db / vpc-db / 10.1.0.0/16
   + App protocol: HTTP
 
 - Environment variables:
-
-| Key | Value |
-|-----|-------|
-| NODE_ENV | production |
-| APP_NAME | Mini E |
-| PORT | 3000 |
-| DB_HOST | minie-mysql-prod.cjiueoawu1v0.ap-southeast-1.rds.amazonaws.com |
-| DB_PORT | 3306 |
-| DB_USER | admin |
-| DB_PASS | 0919499505Bap |
-| DB_NAME | miniedb |
-| DB_SSL | false |
-| REDIS_HOST | clustercfg.redis-minie-prod.ysmx1c.apse1.cache.amazonaws.com |
-| REDIS_PORT | 6379 |
-| REDIS_TTL | 60000 |
-| ADMIN_EMAIL | admin@mini-e.com |
-| ADMIN_NAME | System Admin |
-| ADMIN_PASSWORD | Admin@Mini2026! |
-| CORS_ORIGINS | http://minie-fe-055255093740.s3-website-ap-southeast-1.amazonaws.com |
-| BCRYPT_SALT_ROUNDS | 12 |
-| ACCESS_TOKEN_SECRET | dev_access_secret_change_me |
-| ACCESS_TOKEN_EXPIRES | 15m |
-| REFRESH_TOKEN_SECRET | dev_refresh_secret_change_me |
-| REFRESH_TOKEN_EXPIRES | 7d |
-| REFRESH_COOKIE_NAME | refreshToken |
-| SMTP_HOST | smtp.gmail.com |
-| SMTP_PORT | 465 |
-| SMTP_SECURE | true |
-| SMTP_USER | quochiep1610@gmail.com |
-| SMTP_PASS | xbrukrqfxqlfzbdd |
-| MAIL_FROM | Mini E <quochiep1610@gmail.com> |
-| OTP_WINDOW_MINUTES | 5 |
-| OTP_RESEND_COOLDOWN_SECONDS | 60 |
-| AWS_REGION | ap-southeast-1 |
-| S3_BUCKET_MEDIA | media-s3-minie |
-| CLOUDINARY_CLOUD_NAME | dehw5arxd |
-| CLOUDINARY_API_KEY | 876869416627633 |
-| CLOUDINARY_API_SECRET | pq_9mukiNtE8nqgCMSJD4-ZgbfY |
-| TWILIO_ACCOUNT_SID | AC7bee0afc0656b7e7633f28bb377e956c |
-| TWILIO_AUTH_TOKEN | 8e132fca3662a6da2d64416beaa40afc |
-| TWILIO_FROM_NUMBER | +18125705241 |
-| VNPAY_TMN_CODE | 40CQJZYY |
-| VNPAY_HASH_SECRET | DU5CVCFLEK190EBND8B89E21K68CP7X0 |
-| VNPAY_ENDPOINT | https://sandbox.vnpayment.vn/paymentv2/vpcpay.html |
-| VNPAY_RETURN_URL | http://alb-minie-prod-1740448441.ap-southeast-1.elb.amazonaws.com/api/payments/vnpay/return |
-| VNPAY_LOCALE | vn |
-| VNPAY_CURRENCY | VND |
-| VNPAY_VERSION | 2.1.0 |
+...
 
 - Logging:
   + Log driver: awslogs
@@ -468,7 +421,7 @@ VPC ID accepter: chọn minie-db / vpc-db / 10.1.0.0/16
   + Public IP: Disabled
 
 > ECS backend được đặt trong private subnets của VPC App.  
-> Do Public IP bị disable nên ECS đi ra Internet thông qua NAT Gateway để pull image từ ECR và gọi các dịch vụ bên ngoài như Gmail SMTP, Cloudinary, Twilio, VNPAY.
+
 
 - Load balancing:
   + Load balancer type: Application Load Balancer
