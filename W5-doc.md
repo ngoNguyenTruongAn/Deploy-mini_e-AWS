@@ -992,7 +992,7 @@ curl -Method POST `
 
 **Kết Quả**:
 ![Test curl authenticated 200](./evidence-W5/Test%20curl%20authenticated%20200.jpg)
-![Test curl DynamoDB](./evidence-W5/Test%20curl%20authenticated%20200.jpg)
+![Test curl DynamoDB](./evidence-W5/Test%20curl%20DynamoDB.jpg)
 ## MH4-J — Test curl unauthenticated 403
 Chạy không có API key:
 curl -Method POST `
@@ -1102,3 +1102,34 @@ if (uploadedImagesMetadata.length > 0) {
 ## MH4-O — Evidence DynamoDB có metadata từ backend
 - DynamoDB → Tables → minie-media-metadata → Explore table items
 ![DynamoDB có metadata](./evidence-W5/ynamoDB%20có%20metadata.jpg)
+
+## MH5 — Serverless Scaling Pattern - S3-Event-Triggered Lambda Pattern
+## 1 — Sửa Lambda code để hỗ trợ cả API Gateway và S3 Event
+- Vào: Lambda → Thay toàn bộ code Lambda:
+![Lambda code](./evidence-W5/lambda.mjs)
+## 2 — Tạo S3 trigger cho Lambda
+- Vào Lambda → Functions → lambda-minie-media-metadata
+- Chọn Add trigger
+- Cấu hình:
++ Source: S3
++ Bucket: media-s3-minie
++ Event type: All object create events
++ Prefix: products/
++ Suffix: để trống hoặc .jpg nếu chỉ test jpg
++ Recursive invocation warning: tick xác nhận nếu AWS hỏi
+- Bấm Add.
+![trigger Lambda](./evidence-W5/trigger%20Lambda.jpg)
+## 3 — Upload file test vào S3
+- Vào: S3 → Buckets → media-s3-minie → products/
+- Upload một ảnh: ALB.jpg
+![file test vào S3](./evidence-W5/file%20test%20vào%20S3.jpg)
+## 4 — Check Lambda logs
+- Vào CloudWatch → Log groups → /aws/lambda/lambda-minie-media-metadata
+- Mở log stream mới nhất
+![Lambda logs MH5](./evidence-W5/Lambda%20logs%20MH5.jpg)
+=> Lambda được trigger bởi S3 event
+=> Event đến từ bucket media-s3-minie, file upload nằm trong products/ALB.jpg.
+## 5 — Check DynamoDB item
+- Vào DynamoDB → Tables → minie-media-metadata → Explore table items
+![Check DynamoDB item MH5](./evidence-W5/Check%20DynamoDB%20item%20MH5.jpg)
+=> Item từ S3 trigger đã được ghi vào table
